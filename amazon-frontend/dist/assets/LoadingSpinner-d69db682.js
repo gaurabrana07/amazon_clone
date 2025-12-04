@@ -1,0 +1,2 @@
+import{j as e}from"./index-87321579.js";const i=({size:r="medium",text:s="Loading..."})=>{const a={small:"w-4 h-4",medium:"w-8 h-8",large:"w-12 h-12"};return e.jsxs("div",{className:"flex flex-col items-center justify-center p-8",children:[e.jsx("div",{className:`${a[r]} animate-spin`,children:e.jsx("div",{className:"h-full w-full border-4 border-gray-200 border-t-amazon-orange rounded-full"})}),s&&e.jsx("p",{className:"mt-4 text-gray-600 font-medium",children:s})]})};export{i as L};
+//# sourceMappingURL=LoadingSpinner-d69db682.js.map
