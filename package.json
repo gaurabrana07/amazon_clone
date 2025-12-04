@@ -1,0 +1,17 @@
+{
+  "name": "amazon-clone",
+  "version": "1.0.0",
+  "description": "Amazon Clone - Full Stack E-commerce Application",
+  "scripts": {
+    "dev": "cd amazon-frontend && npm run dev",
+    "build": "cd amazon-frontend && npm run build",
+    "preview": "cd amazon-frontend && npm run preview",
+    "backend": "cd amazon-backend && npm start",
+    "install:frontend": "cd amazon-frontend && npm install",
+    "install:backend": "cd amazon-backend && npm install",
+    "install:all": "npm run install:frontend && npm run install:backend"
+  },
+  "keywords": ["amazon", "clone", "ecommerce", "react", "nodejs"],
+  "author": "Gaurab Rana",
+  "license": "MIT"
+}
