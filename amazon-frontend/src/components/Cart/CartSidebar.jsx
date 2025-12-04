@@ -62,13 +62,13 @@ const CartSidebar = ({ isOpen, onClose }) => {
                     <div className="flex-shrink-0">
                       <img
                         src={item.image}
-                        alt={item.title}
+                        alt={item.name}
                         className="w-16 h-16 object-cover rounded"
                       />
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="text-sm font-medium text-gray-900 truncate">
-                        {item.title}
+                        {item.name}
                       </h4>
                       <p className="text-sm text-gray-500 mt-1">
                         {formatPrice(item.price)}

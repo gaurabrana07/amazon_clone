@@ -6,6 +6,8 @@ import { ProductProvider } from './context/ProductContext';
 import { WishlistProvider } from './context/WishlistContext';
 import { NotificationProvider } from './context/NotificationContext';
 import { SearchProvider } from './context/SearchContext';
+import { PaymentProvider } from './context/PaymentContext';
+import { OrdersProvider } from './context/OrdersContext';
 import ErrorBoundary from './components/ErrorBoundary';
 
 // Core Components - loaded immediately
@@ -73,39 +75,43 @@ function App() {
             <SearchProvider>
               <CartProvider>
                 <WishlistProvider>
-                  <Router>
-                    <Suspense fallback={<PageLoader />}>
-                      <Routes>
-                        <Route path="/" element={<Layout />}>
-                          <Route index element={<HomePage />} />
-                          <Route path="gaming" element={<GamingPage />} />
-                          <Route path="home-living" element={<HomeLivingPage />} />
-                          <Route path="fashion" element={<FashionPage />} />
-                          <Route path="health-sports" element={<HealthSportsPage />} />
-                          <Route path="kids-baby" element={<KidsBabyPage />} />
-                          <Route path="automotive-tools" element={<AutomotiveToolsPage />} />
-                          <Route path="products" element={<ProductsPage />} />
-                          <Route path="all-products" element={<AllProductsPage />} />
-                          <Route path="product/:id" element={<ProductDetailPage />} />
-                          <Route path="deals" element={<DealsPage />} />
-                          <Route path="bestsellers" element={<BestSellersPage />} />
-                          <Route path="cart" element={<CartPage />} />
-                          <Route path="wishlist" element={<WishlistPage />} />
-                          <Route path="search" element={<SearchResultsPage />} />
-                          <Route path="login" element={<AuthPage />} />
-                          <Route path="register" element={<AuthPage />} />
-                          <Route path="checkout" element={<CheckoutPage />} />
-                          <Route path="order-confirmation" element={<OrderConfirmationPage />} />
-                          <Route path="profile" element={<UserProfilePage />} />
-                          <Route path="orders" element={<OrdersPage />} />
-                          <Route path="addresses" element={<AddressesPage />} />
-                          <Route path="customer-service" element={<CustomerServicePage />} />
-                          <Route path="sell" element={<SellPage />} />
-                          <Route path="*" element={<HomePage />} />
-                        </Route>
-                      </Routes>
-                    </Suspense>
-                  </Router>
+                  <PaymentProvider>
+                    <OrdersProvider>
+                      <Router>
+                        <Suspense fallback={<PageLoader />}>
+                          <Routes>
+                            <Route path="/" element={<Layout />}>
+                              <Route index element={<HomePage />} />
+                              <Route path="gaming" element={<GamingPage />} />
+                              <Route path="home-living" element={<HomeLivingPage />} />
+                              <Route path="fashion" element={<FashionPage />} />
+                              <Route path="health-sports" element={<HealthSportsPage />} />
+                              <Route path="kids-baby" element={<KidsBabyPage />} />
+                              <Route path="automotive-tools" element={<AutomotiveToolsPage />} />
+                              <Route path="products" element={<ProductsPage />} />
+                              <Route path="all-products" element={<AllProductsPage />} />
+                              <Route path="product/:id" element={<ProductDetailPage />} />
+                              <Route path="deals" element={<DealsPage />} />
+                              <Route path="bestsellers" element={<BestSellersPage />} />
+                              <Route path="cart" element={<CartPage />} />
+                              <Route path="wishlist" element={<WishlistPage />} />
+                              <Route path="search" element={<SearchResultsPage />} />
+                              <Route path="login" element={<AuthPage />} />
+                              <Route path="register" element={<AuthPage />} />
+                              <Route path="checkout" element={<CheckoutPage />} />
+                              <Route path="order-confirmation/:orderId" element={<OrderConfirmationPage />} />
+                              <Route path="profile" element={<UserProfilePage />} />
+                              <Route path="orders" element={<OrdersPage />} />
+                              <Route path="addresses" element={<AddressesPage />} />
+                              <Route path="customer-service" element={<CustomerServicePage />} />
+                              <Route path="sell" element={<SellPage />} />
+                              <Route path="*" element={<HomePage />} />
+                            </Route>
+                          </Routes>
+                        </Suspense>
+                      </Router>
+                    </OrdersProvider>
+                  </PaymentProvider>
                 </WishlistProvider>
               </CartProvider>
             </SearchProvider>

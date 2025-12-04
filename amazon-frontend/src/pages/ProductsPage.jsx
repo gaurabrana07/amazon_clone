@@ -1,24 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import ProductCard from '../components/ProductCard/ProductCard';
 import { useProducts } from '../context/ProductContext';
 
 const ProductsPage = () => {
-  const { 
-    products, 
-    filteredProducts, 
-    searchQuery, 
-    setSearchQuery,
-    selectedCategory,
-    setSelectedCategory,
-    selectedPriceRange,
-    setSelectedPriceRange,
-    selectedRating,
-    setSelectedRating,
-    sortBy,
-    setSortBy
-  } = useProducts();
+  const { products } = useProducts();
   
+  // Local filter state
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedPriceRange, setSelectedPriceRange] = useState('all');
+  const [selectedRating, setSelectedRating] = useState('all');
+  const [sortBy, setSortBy] = useState('featured');
   const [showFilters, setShowFilters] = useState(false);
+  
+  // Filter and sort products locally
+  const filteredProducts = useMemo(() => {
+    let filtered = [...products];
+    
+    // Search filter
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter(p => 
+        p.name?.toLowerCase().includes(query) ||
+        p.description?.toLowerCase().includes(query) ||
+        p.brand?.toLowerCase().includes(query) ||
+        p.category?.toLowerCase().includes(query)
+      );
+    }
+    
+    // Category filter
+    if (selectedCategory !== 'All') {
+      filtered = filtered.filter(p => 
+        p.category?.toLowerCase() === selectedCategory.toLowerCase()
+      );
+    }
+    
+    // Price range filter
+    if (selectedPriceRange !== 'all') {
+      const [min, max] = selectedPriceRange.split('-').map(v => 
+        v === '+' || v.includes('+') ? Infinity : parseInt(v)
+      );
+      filtered = filtered.filter(p => p.price >= min && (max === Infinity || p.price <= max));
+    }
+    
+    // Rating filter
+    if (selectedRating !== 'all') {
+      const minRating = parseInt(selectedRating);
+      filtered = filtered.filter(p => (p.rating || 0) >= minRating);
+    }
+    
+    // Sort
+    switch (sortBy) {
+      case 'price-asc':
+        filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
+        break;
+      case 'price-desc':
+        filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
+        break;
+      case 'rating':
+        filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+        break;
+      case 'newest':
+        filtered.sort((a, b) => (b.id || 0) - (a.id || 0));
+        break;
+      default:
+        // featured - keep original order
+        break;
+    }
+    
+    return filtered;
+  }, [products, searchQuery, selectedCategory, selectedPriceRange, selectedRating, sortBy]);
   
   const categories = [
     'All',
@@ -36,7 +87,7 @@ const ProductsPage = () => {
     { label: '₹1,000 - ₹5,000', value: '1000-5000' },
     { label: '₹5,000 - ₹10,000', value: '5000-10000' },
     { label: '₹10,000 - ₹25,000', value: '10000-25000' },
-    { label: 'Over ₹25,000', value: '25000+' }
+    { label: 'Over ₹25,000', value: '25000-+' }
   ];
   
   const sortOptions = [
@@ -252,14 +303,6 @@ const ProductsPage = () => {
         </div>
       </div>
       
-      {/* Load More Button */}
-      {filteredProducts.length > 0 && (
-        <div className="text-center py-8">
-          <button className="bg-amazon-blue hover:bg-amazon-blue-light text-white py-3 px-8 rounded-md transition-colors">
-            Load More Products
-          </button>
-        </div>
-      )}
     </div>
   );
 };

@@ -32,8 +32,8 @@ const SmartRecommendations = ({
   } = useRecommendations();
   
   const { trackRecommendationView, trackRecommendationClick } = useRecommendationAnalytics();
-  const { addToCart, cart } = useCart();
-  const { addToWishlist, removeFromWishlist, wishlistItems } = useWishlist();
+  const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist, wishlistItems } = useWishlist();
   
   const [displayProducts, setDisplayProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -135,8 +135,7 @@ const SmartRecommendations = ({
     e.preventDefault();
     e.stopPropagation();
     
-    const isProductInWishlist = wishlistItems.some(item => item.id === product.id);
-    if (isProductInWishlist) {
+    if (isInWishlist(product.id)) {
       removeFromWishlist(product.id);
     } else {
       addToWishlist(product);
@@ -145,8 +144,8 @@ const SmartRecommendations = ({
   };
 
   // Check if product is in wishlist
-  const isInWishlist = (productId) => {
-    return wishlistItems.some(item => item.id === productId);
+  const checkInWishlist = (productId) => {
+    return isInWishlist(productId);
   };
 
   // Format price
@@ -223,7 +222,7 @@ const SmartRecommendations = ({
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
         {displayProducts.map((recommendation, index) => {
           const { product, reason } = recommendation;
-          const inWishlist = isInWishlist(product.id);
+          const inWishlist = checkInWishlist(product.id);
           
           return (
             <Link

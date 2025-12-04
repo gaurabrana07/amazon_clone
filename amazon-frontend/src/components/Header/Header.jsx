@@ -59,7 +59,7 @@ const Header = () => {
     <header className="bg-amazon-blue text-white sticky top-0 z-50 shadow-lg">
       {/* Main Navigation Bar */}
       <div className="bg-amazon-blue">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="w-full px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-1 hover:bg-amazon-blue-light p-2 rounded transition-colors">
@@ -304,92 +304,84 @@ const Header = () => {
       
       {/* Secondary Navigation */}
       <div className="bg-amazon-blue-light">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center space-x-6 h-10 overflow-x-auto scrollbar-hide">
-            <Link 
-              to="/" 
-              className={`whitespace-nowrap nav-link flex items-center ${isActiveRoute('/') ? 'text-amazon-yellow' : ''}`}
-            >
-              <i className="fas fa-bars mr-2"></i>
-              All
-            </Link>
-            <Link 
-              to="/deals" 
-              className={`whitespace-nowrap nav-link flex items-center ${isActiveRoute('/deals') ? 'text-amazon-yellow' : ''}`}
-            >
-              <i className="fas fa-fire mr-2 text-orange-400"></i>
-              Today's Deals
-            </Link>
-            <Link 
-              to="/bestsellers" 
-              className={`whitespace-nowrap nav-link flex items-center ${isActiveRoute('/bestsellers') ? 'text-amazon-yellow' : ''}`}
-            >
-              <i className="fas fa-trophy mr-2 text-yellow-400"></i>
-              Best Sellers
-            </Link>
-            <Link 
-              to="/gaming" 
-              className={`whitespace-nowrap nav-link flex items-center ${isActiveRoute('/gaming') ? 'text-amazon-yellow' : ''}`}
-            >
-              <i className="fas fa-gamepad mr-2 text-purple-400"></i>
-              Gaming & Tech
-            </Link>
-            <Link 
-              to="/home-living" 
-              className={`whitespace-nowrap nav-link flex items-center ${isActiveRoute('/home-living') ? 'text-amazon-yellow' : ''}`}
-            >
-              <i className="fas fa-home mr-2 text-green-400"></i>
-              Home & Living
-            </Link>
-            <Link 
-              to="/fashion" 
-              className={`whitespace-nowrap nav-link flex items-center ${isActiveRoute('/fashion') ? 'text-amazon-yellow' : ''}`}
-            >
-              <i className="fas fa-tshirt mr-2 text-pink-400"></i>
-              Fashion
-            </Link>
-            <Link 
-              to="/health-sports" 
-              className={`whitespace-nowrap nav-link flex items-center ${isActiveRoute('/health-sports') ? 'text-amazon-yellow' : ''}`}
-            >
-              <i className="fas fa-dumbbell mr-2 text-red-400"></i>
-              Health & Sports
-            </Link>
-            <Link 
-              to="/kids-baby" 
-              className={`whitespace-nowrap nav-link flex items-center ${isActiveRoute('/kids-baby') ? 'text-amazon-yellow' : ''}`}
-            >
-              <i className="fas fa-baby mr-2 text-blue-400"></i>
-              Kids & Baby
-            </Link>
-            <Link 
-              to="/automotive-tools" 
-              className={`whitespace-nowrap nav-link flex items-center ${isActiveRoute('/automotive-tools') ? 'text-amazon-yellow' : ''}`}
-            >
-              <i className="fas fa-car mr-2 text-gray-400"></i>
-              Auto & Tools
-            </Link>
-            <Link 
-              to="/all-products" 
-              className={`whitespace-nowrap nav-link flex items-center ${isActiveRoute('/all-products') ? 'text-amazon-yellow' : ''}`}
-            >
-              <i className="fas fa-th-large mr-2 text-indigo-400"></i>
-              All Products
-            </Link>
-            <Link 
-              to="/customer-service" 
-              className={`whitespace-nowrap nav-link flex items-center ${isActiveRoute('/customer-service') ? 'text-amazon-yellow' : ''}`}
-            >
-              <i className="fas fa-headset mr-2 text-cyan-400"></i>
-              Customer Service
-            </Link>
-            <Link 
-              to="/sell" 
-              className={`whitespace-nowrap nav-link flex items-center ${isActiveRoute('/sell') ? 'text-amazon-yellow' : ''}`}
-            >
-              <i className="fas fa-store mr-2 text-amber-400"></i>
-              Sell
-            </Link>
+        <div className="w-full px-4">
+          <div className="flex items-center justify-between h-10 overflow-x-auto scrollbar-hide">
+            <div className="flex items-center space-x-6">
+              <Link 
+                to="/" 
+                className={`whitespace-nowrap nav-link ${isActiveRoute('/') ? 'text-amazon-yellow' : ''}`}
+              >
+                All
+              </Link>
+              <Link 
+                to="/deals" 
+                className={`whitespace-nowrap nav-link ${isActiveRoute('/deals') ? 'text-amazon-yellow' : ''}`}
+              >
+                Today's Deals
+              </Link>
+              <Link 
+                to="/bestsellers" 
+                className={`whitespace-nowrap nav-link ${isActiveRoute('/bestsellers') ? 'text-amazon-yellow' : ''}`}
+              >
+                Best Sellers
+              </Link>
+              <Link 
+                to="/gaming" 
+                className={`whitespace-nowrap nav-link ${isActiveRoute('/gaming') ? 'text-amazon-yellow' : ''}`}
+              >
+                Gaming & Tech
+              </Link>
+              <Link 
+                to="/home-living" 
+                className={`whitespace-nowrap nav-link ${isActiveRoute('/home-living') ? 'text-amazon-yellow' : ''}`}
+              >
+                Home & Living
+              </Link>
+              <Link 
+                to="/fashion" 
+                className={`whitespace-nowrap nav-link ${isActiveRoute('/fashion') ? 'text-amazon-yellow' : ''}`}
+              >
+                Fashion
+              </Link>
+            </div>
+            <div className="flex items-center space-x-6">
+              <Link 
+                to="/health-sports" 
+                className={`whitespace-nowrap nav-link ${isActiveRoute('/health-sports') ? 'text-amazon-yellow' : ''}`}
+              >
+                Health & Sports
+              </Link>
+              <Link 
+                to="/kids-baby" 
+                className={`whitespace-nowrap nav-link ${isActiveRoute('/kids-baby') ? 'text-amazon-yellow' : ''}`}
+              >
+                Kids & Baby
+              </Link>
+              <Link 
+                to="/automotive-tools" 
+                className={`whitespace-nowrap nav-link ${isActiveRoute('/automotive-tools') ? 'text-amazon-yellow' : ''}`}
+              >
+                Auto & Tools
+              </Link>
+              <Link 
+                to="/all-products" 
+                className={`whitespace-nowrap nav-link ${isActiveRoute('/all-products') ? 'text-amazon-yellow' : ''}`}
+              >
+                All Products
+              </Link>
+              <Link 
+                to="/customer-service" 
+                className={`whitespace-nowrap nav-link ${isActiveRoute('/customer-service') ? 'text-amazon-yellow' : ''}`}
+              >
+                Customer Service
+              </Link>
+              <Link 
+                to="/sell" 
+                className={`whitespace-nowrap nav-link ${isActiveRoute('/sell') ? 'text-amazon-yellow' : ''}`}
+              >
+                Sell
+              </Link>
+            </div>
           </div>
         </div>
       </div>
