@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Maskable icon with safe zone -->
+  <circle cx="256" cy="256" r="256" fill="#FF9900"/>
+  
+  <!-- Shopping cart (centered and scaled for safe zone) -->
+  <path d="M156 187h27l22.4 112c1.2 5.9 6.4 10.4 12.4 10.4h104.4c6 0 11.2-4.5 12.4-10.4L357 213H198" stroke="white" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="218" cy="360" r="13" fill="white"/>
+  <circle cx="314" cy="360" r="13" fill="white"/>
+  
+  <!-- Amazon smile -->
+  <path d="M181 280c40 27 120 27 160 0" stroke="white" stroke-width="18" stroke-linecap="round"/>
+  <path d="M307 267l27 20" stroke="white" stroke-width="13" stroke-linecap="round"/>
+  
+  <!-- Center "A" for Amazon -->
+  <text x="220" y="170" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white">A</text>
+</svg>
